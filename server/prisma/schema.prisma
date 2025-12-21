@@ -1,0 +1,21 @@
+// USER MODEL
+// Kyun? -> For URL Creater Record
+//
+// Fields:
+// - id: Unique identifier (cuid = sollision-resistant unique identifier)
+// - email: For Login (@unique = No Duplicates)
+// - password: For Hashed Password
+// - name: For User Name (Optional Field '?' for optional field)
+// - createdAt: Auto Timestamp
+// - urls: Relationship -> One User to Multiple URLs (1:N)
+
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  password  String   
+  name      String?   
+  createdAt DateTime @default(now())
+
+  urls      Url[]   
+}
+
