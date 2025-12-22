@@ -19,3 +19,45 @@ model User {
   urls      Url[]   
 }
 
+
+// URL MODEL
+// Kyun? -> For Short URLs Record
+//
+// Fields:
+// - shortCode: "abc123" part, @unique = No Duplicates
+// - originalurl: Actual Long URL
+// - user/userId: The URL Creator (Foreign Key Relationship)
+// - clicks: Relationship -> One URL to Many Clicks (1:N)
+
+model Url {
+  id          String   @id @default(cuid())
+  shortCode   String   @unique
+  originalUrl String
+  createdAt   DateTime @default(now())
+
+  user        User     @relation(fields: [userId], references: [id])
+  userId      String
+
+  clicks      Click[]
+}
+
+
+// CLICK MODEL
+// Kyun? -> For Analytics Clicks Record
+//
+// Fields:
+// - timestamp: When Clicked?
+// - ipAddress: From Where was Clicked?
+// - userAgent: What Browser was Used?
+// - url/urlId: Which URL was Clicked? (Foreign Key)
+
+model Click {
+  id          String   @id @default(cuid())
+  timestamp   DateTime @default(now())
+  ipAddress   String?
+  userAgent   String?
+
+  url         Url      @relation(fields: [urlId], references: [id])
+  urlId       String
+}
+
