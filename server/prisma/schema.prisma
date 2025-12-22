@@ -1,3 +1,12 @@
+generator client {
+  provider = "prisma-client"
+  output = "./generated/prisma"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
 // USER MODEL
 // Kyun? -> For URL Creater Record
 //
