@@ -4,6 +4,7 @@ import { GraphQLModule } from '@nestjs/graphql';
 import { PrismaModule } from './prisma/prisma.module';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { AuthModule } from './auth/auth.module';
+import { UrlModule } from './url/url.module';
 
 @Module({
   imports: [
@@ -20,7 +21,9 @@ import { AuthModule } from './auth/auth.module';
       sortSchema: true,
     }),
 
-    AuthModule
+    AuthModule,
+
+    UrlModule
   ],
 })
 
