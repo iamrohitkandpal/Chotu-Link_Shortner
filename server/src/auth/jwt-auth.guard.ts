@@ -1,6 +1,6 @@
 import {AuthGuard} from '@nestjs/passport';
-import { ExecutionContext, Injectable } from "@nestjs/common";
 import { GqlExecutionContext } from "@nestjs/graphql";
+import { ExecutionContext, Injectable } from "@nestjs/common";
 
 // GraphQl AuthGuard
 @Injectable()
