@@ -3,8 +3,8 @@ import { Injectable, OnModuleDestroy, OnModuleInit, } from '@nestjs/common';
 // OnModuleInit: For DB connection on server start
 // OnModuleDestroy: For DB disconnection on server close
 
-import { PrismaClient } from '@prisma/client/extension';
 import { PrismaBetterSqlite3 } from '@prisma/adapter-better-sqlite3';
+import { PrismaClient } from '../../prisma/generated/prisma/client.js';
 
 // Ye batata hai ki: "Is class me koi bhi inject kar sakte hai"
 // Matlab: Dusri classes meni isko use kar sakte hai bina 'new' keyword use kare
