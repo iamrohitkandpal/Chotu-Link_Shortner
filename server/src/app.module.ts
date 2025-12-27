@@ -1,10 +1,10 @@
 import { join } from 'path';
 import { Module } from '@nestjs/common';
 import { GraphQLModule } from '@nestjs/graphql';
-import { PrismaModule } from './prisma/prisma.module';
+import { PrismaModule } from './prisma/prisma.module.js';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
-import { AuthModule } from './auth/auth.module';
-import { UrlModule } from './url/url.module';
+import { AuthModule } from './auth/auth.module.js';
+import { UrlModule } from './url/url.module.js';
 
 @Module({
   imports: [
@@ -19,6 +19,8 @@ import { UrlModule } from './url/url.module';
       playground: true,
       // Sorting for a clean look nothing else and this is me Rohit writing this not a bot ok.
       sortSchema: true,
+
+      context: ({ req }) => ({ req }),
     }),
 
     AuthModule,
