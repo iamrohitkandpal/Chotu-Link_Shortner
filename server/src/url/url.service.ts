@@ -1,7 +1,7 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { nanoid } from 'nanoid';
-import { PrismaService } from 'src/prisma/prisma.service';
-import { CreateUrlInput } from './dto/create-url.input';
+import { PrismaService } from '../prisma/prisma.service.js';
+import { CreateUrlInput } from './dto/create-url.input.js';
 
 @Injectable()
 export class UrlService {
@@ -23,7 +23,7 @@ export class UrlService {
         return this.prisma.url.create({
             data: {
                 shortCode,
-                orginalUrl: input.originalUrl,
+                originalUrl: input.originalUrl,
                 userId,
             },
             include: { user: true }
