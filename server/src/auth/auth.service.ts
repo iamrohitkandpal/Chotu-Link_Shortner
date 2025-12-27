@@ -1,9 +1,9 @@
 import * as bcrypt from 'bcryptjs';
 import { JwtService } from '@nestjs/jwt';
-import { LoginInput } from './dto/login.input';
-import { RegisterInput } from './dto/register.input';
-import { PrismaService } from 'src/prisma/prisma.service';
+import { LoginInput } from './dto/login.input.js';
+import { RegisterInput } from './dto/register.input.js';
 import { Injectable, UnauthorizedException, ConflictException } from '@nestjs/common';
+import { PrismaService } from '../prisma/prisma.service.js';
 
 @Injectable()
 export class AuthService {

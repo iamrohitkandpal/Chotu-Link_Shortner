@@ -1,9 +1,9 @@
 import { Module } from '@nestjs/common';
 import { JwtModule } from '@nestjs/jwt';
-import { AuthService } from './auth.service';
-import { AuthResolver } from './auth.resolver';
+import { AuthService } from './auth.service.js';
+import { AuthResolver } from './auth.resolver.js';
 import { PassportModule } from '@nestjs/passport';
-import { JwtStrategy } from './jwt.strategy';
+import { JwtStrategy } from './jwt.strategy.js';
 
 @Module({
   imports: [
