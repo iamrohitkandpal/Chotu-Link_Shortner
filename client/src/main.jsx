@@ -3,7 +3,7 @@ import React from 'react'
 import App from './App.jsx'
 import ReactDOM from 'react-dom/client'
 import { client } from './lib/apollo.js'
-import { ApolloProvider } from '@apollo/client'
+import { ApolloProvider } from '@apollo/client/react'
 import { BrowserRouter } from 'react-router-dom'
 import { AuthProvider } from './context/AuthContext.jsx'
 
