@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { useQuery } from "@apollo/client";
+import { useQuery } from "@apollo/client/react";
 import { ME_QUERY } from "../graphql/queries";
 
 // A Global State Store and Rohit Here :)

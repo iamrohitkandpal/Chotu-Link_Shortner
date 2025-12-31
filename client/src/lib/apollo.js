@@ -3,10 +3,10 @@ import { SetContextLink } from "@apollo/client/link/context";
 
 // GraphQL endpoint
 const httpLink = new HttpLink({
-    uri: "http://localhost:3000/api/graphql",
+    uri: "http://localhost:3333/graphql",
 });
 
-const authLink = SetContextLink((_, {headers}) => {
+const authLink = new SetContextLink((_, {headers}) => {
     const token = localStorage.getItem('token');
 
     return {

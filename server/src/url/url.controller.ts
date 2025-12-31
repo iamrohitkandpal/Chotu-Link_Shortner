@@ -2,7 +2,7 @@ import { Controller, Get, NotFoundException, Param, Req, Res } from "@nestjs/com
 import { UrlService } from "./url.service.js";
 import * as express from "express";
 
-@Controller('url')
+@Controller()
 export class UrlController {
     constructor(private urlService: UrlService) {}
 
