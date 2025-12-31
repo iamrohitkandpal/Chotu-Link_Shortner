@@ -1,10 +1,12 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { REGISTER_MUTATION } from '../graphql/mutations';
-import { useMutation } from '@apollo/client';
+import { useMutation } from '@apollo/client/react';
+import { useAuth } from '../context/AuthContext';
+import { Link } from 'react-router-dom';
 
 function Register() {
-    const [formData, setFormData] = useState({ email: '', password: '' });
+    const [formData, setFormData] = useState({ email: '', password: '', name: '' });
     const [error, setError] = useState('');
 
     const navigate = useNavigate();

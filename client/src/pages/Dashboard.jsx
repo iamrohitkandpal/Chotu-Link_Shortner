@@ -1,4 +1,4 @@
-import { useQuery } from "@apollo/client";
+import { useQuery } from "@apollo/client/react";
 import UrlCard from "../components/UrlCard";
 import UrlForm from "../components/UrlForm";
 import { useAuth } from "../context/AuthContext";
