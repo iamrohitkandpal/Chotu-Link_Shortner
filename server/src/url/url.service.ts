@@ -42,25 +42,22 @@ export class UrlService {
         });
     }
 
-    // To redirect the short url to original url
-    async redirect(shortCode: string, ipAddress?: string, userAgent?: string) {
-        const url = await this.prisma.url.findUnique({
-            where: { shortCode }
+    // To get URL by short code (no click tracking)
+    async getUrlByCode(shortCode: string) {
+        return this.prisma.url.findUnique({
+            where: { shortCode },
         });
+    }
 
-        if (!url) {
-            throw new NotFoundException('Short URL not found!');
-        }
-
-        await this.prisma.click.create({
+    // To click separately (fire and forget)
+    async trackClick(urlId: string, ipAddress?: string, userAgent?: string) {
+        return await this.prisma.click.create({
             data: {
-                urlId: url.id,
+                urlId,
                 ipAddress,
                 userAgent,
             }
         });
-
-        return url.originalUrl;
     }
 
     // To delete the url 

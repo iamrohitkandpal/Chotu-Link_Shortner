@@ -12,16 +12,16 @@ export class UrlController {
         @Req() req: express.Request,
         @Res() res: express.Response
     ) {
-        try {
-            const ipAddress = req.ip;
-            const userAgent = req.headers['user-agent'];
+        const url = await this.urlService.getUrlByCode(shortCode);
 
-            const originalUrl = await this.urlService.redirect(shortCode, ipAddress, userAgent);
-
-            return res.redirect(originalUrl);
-        } catch (error) {
-            throw new NotFoundException('Short URL not found!');
+        if (!url) {
+            throw new NotFoundException('Short URL not Found!');
         }
+
+        this.urlService.trackClick(url.id, req.ip, req.headers['user-agent'])
+            .catch(err => console.error('Click tracking failed: ', err));
+
+        return res.redirect(url.originalUrl);
     }
 
     @Get()

@@ -7,7 +7,10 @@ import { MY_URLS_QUERY } from "../graphql/queries";
 function Dashboard() {
     const { user, logout } = useAuth();
 
-    const { loading, error, data, refetch } = useQuery(MY_URLS_QUERY);
+    const { loading, error, data, refetch } = useQuery(MY_URLS_QUERY, {
+        pollInterval: 5000,
+        variables: { userId: user?.id }
+    });
 
     if (loading) return <div className="loading">Loading your URLs...</div>
     if (error) return <div className="error">Error: {error.message}</div>
